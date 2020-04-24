@@ -1,52 +1,58 @@
 - const { olapicWidgetPerformance: { run, pageSummary} } = pageInfo.data
-if run
-  h2 Olapic Widget's Performance
-else
-  h2 Avg. Olapic Widget's Performance
+- const found = run ? run.stats.found : pageSummary.stats.found
 
-//- p #{JSON.stringify(run)}
-//- p #{JSON.stringify(pageSummary)}
+//-   p #{JSON.stringify(run)}
 
-.row
-  .one-half.column
-    table
-      tr
-        th Metric
-        th Time in seconds
-      tr
-        td Script loading time
-        if run
-          td #{run.stats.script.loadTime} sec.
-        if pageSummary
-          td #{pageSummary.stats.script.loadTime} sec.
-      tr
-        td CSS load time:
-        td XX
-      tr
-        td Templates load time
-        td XX
-      tr
-        td Script process time
-        if run
-          td #{run.stats.script.proccesTime} sec.
-        if pageSummary
-          td #{pageSummary.stats.script.proccesTime} sec.
-      tr
-        td Time until first image load.
-        td XX
+//-   p #{JSON.stringify(pageSummary)}
+
+
+if found
   if run
+    h2 Olapic Widget's Performance
+  else
+    h2 Avg. Olapic Widget's Performance
+
+  if run
+  .row
     .one-half.column
       table
         tr
-          th(colspan="2") Media analisis.
+          th Metric
+          th Time in seconds
         tr
-          td First loaded Asset
-          td Slower loaded Asset
+          td Script loading time
+          if run
+            td #{run.stats.script.loadTime} sec.
+          if pageSummary
+            td #{pageSummary.stats.script.loadTime} sec.
         tr
-          td
-            img.screenshot(src=run.stats.firstMedia.request.url, alt='First Media', style='max-width: 250px;')
-          td
-            img.screenshot(src=run.stats.slowerMedia.request.url, alt='Slower Media', style='max-width: 250px;')
+          td CSS load time:
+          td XX
+        tr
+          td Templates load time
+          td XX
+        tr
+          td Script process time
+          if run
+            td #{run.stats.script.proccesTime} sec.
+          if pageSummary
+            td #{pageSummary.stats.script.proccesTime} sec.
+        tr
+          td Time until first image load.
+          td XX
+    if run
+      .one-half.column
+        table
+          tr
+            th(colspan="2") Media analisis.
+          tr
+            td First loaded Asset
+            td Slower loaded Asset
+          tr
+            td
+              img.screenshot(src=run.stats.firstMedia.request.url, alt='First Media', style='max-width: 250px;')
+            td
+              img.screenshot(src=run.stats.slowerMedia.request.url, alt='Slower Media', style='max-width: 250px;')
 
-//- else
-//-  p Olapic widget was not found on the site.
+else
+ p Olapic widget was not found on the site.
