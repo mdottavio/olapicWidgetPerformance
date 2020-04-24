@@ -6,7 +6,7 @@ Evaluate the requests made during the test to find those related with the Olapic
 
 # Results
 The plugin introduce a new tab on the `Pages`' summary section of the results.
-<img src="https://raw.githubusercontent.com/mdottavio/olapicWidgetPerformance/master/example.png">
+![](sample.png)
 
 
 # How to use it
