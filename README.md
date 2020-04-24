@@ -55,5 +55,4 @@ Follow instructions on the [official doc site](https://www.sitespeed.io/document
 
 # TODO
 
-* Currently supports `1` iteration.
 * Keep improving data analysis.
