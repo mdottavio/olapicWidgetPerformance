@@ -1,0 +1,20 @@
+{
+  "name": "olapic-widget-performance",
+  "version": "0.0.1",
+  "description": "sitespeed.io plugin to evaluate the Olapic's widget performace.",
+  "main": "lib/index.js",
+  "scripts": {
+    "install-hooks": "./hooks/install",
+    "test": "",
+    "lint": "eslint .",
+    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
+  },
+  "author": "Mauricio Dottavio <dottavio@gmail.com.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "prettier": "^2.0.5"
+  }
+}
