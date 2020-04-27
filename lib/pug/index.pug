@@ -50,9 +50,16 @@ if found
             td Slower loaded Asset
           tr
             td
-              img.screenshot(src=run.stats.firstMedia.request.url, alt='First Media', style='max-width: 250px;')
+              if run.stats.firstMedia
+                img.screenshot(src=run.stats.firstMedia.request.url, alt='First Media', style='max-width: 250px;')
+              else
+                p - No data -
             td
-              img.screenshot(src=run.stats.slowerMedia.request.url, alt='Slower Media', style='max-width: 250px;')
+              if run.stats.slowerMedia
+                img.screenshot(src=run.stats.slowerMedia.request.url, alt='Slower Media', style='max-width: 250px;')
+              else
+                p - No data -
+
 
 else
  p Olapic widget was not found on the site.
