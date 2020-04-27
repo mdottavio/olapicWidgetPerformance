@@ -12,7 +12,6 @@ if found
   else
     h2 Avg. Olapic Widget's Performance
 
-  if run
   .row
     .one-half.column
       table
@@ -60,6 +59,10 @@ if found
               else
                 p - No data -
 
+  if run
+    p code #{JSON.stringify(run)}
+  if pageSummary
+    p code #{JSON.stringify(pageSummary)}
 
 else
  p Olapic widget was not found on the site.
