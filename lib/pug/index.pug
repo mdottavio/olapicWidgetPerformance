@@ -1,44 +1,35 @@
 - const { olapicWidgetPerformance: { run, pageSummary} } = pageInfo.data
-- const found = run ? run.stats.found : pageSummary.stats.found
+- const { stats } = (run || pageSummary);
 
-//-   p #{JSON.stringify(run)}
-
-//-   p #{JSON.stringify(pageSummary)}
-
-
-if found
+if stats.found
   if run
     h2 Olapic Widget's Performance
+    //- p #{JSON.stringify(run)}
   else
     h2 Avg. Olapic Widget's Performance
+    //- p #{JSON.stringify(pageSummary)}
 
   .row
     .one-half.column
       table
         tr
           th Metric
-          th Time in seconds
+          th Time in milliseconds.
         tr
           td Script loading time
-          if run
-            td #{run.stats.script.loadTime} sec.
-          if pageSummary
-            td #{pageSummary.stats.script.loadTime} sec.
+          td #{stats.scriptFileLoadTime} ms.
         tr
-          td CSS load time:
-          td XX
+          td Styles load time:
+          td #{stats.stylesFileLoadTime} ms.
         tr
           td Templates load time
-          td XX
+          td #{stats.templatesFileLoadTime} ms.
         tr
-          td Script process time
-          if run
-            td #{run.stats.script.proccesTime} sec.
-          if pageSummary
-            td #{pageSummary.stats.script.proccesTime} sec.
+          td Script's process time.
+          td #{stats.firstTrackingTime} ms.
         tr
           td Time until first image load.
-          td XX
+          td #{stats.timeUntilFirstMedia} ms.
     if run
       .one-half.column
         table
@@ -49,20 +40,15 @@ if found
             td Slower loaded Asset
           tr
             td
-              if run.stats.firstMedia
-                img.screenshot(src=run.stats.firstMedia.request.url, alt='First Media', style='max-width: 250px;')
+              if stats.firstMedia
+                img.screenshot(src=stats.firstMedia.request.url, alt='First Media', style='max-width: 250px;')
               else
                 p - No data -
             td
-              if run.stats.slowerMedia
-                img.screenshot(src=run.stats.slowerMedia.request.url, alt='Slower Media', style='max-width: 250px;')
+              if stats.slowerMedia
+                img.screenshot(src=stats.slowerMedia.request.url, alt='Slower Media', style='max-width: 250px;')
               else
                 p - No data -
-
-  if run
-    p code #{JSON.stringify(run)}
-  if pageSummary
-    p code #{JSON.stringify(pageSummary)}
 
 else
  p Olapic widget was not found on the site.
